@@ -6,24 +6,60 @@
   <title>Minha Biblioteca Virtual</title>
   <style>
     :root{
-      --bg:#f7f2ea; --panel:#fffaf3; --ink:#2d2520; --muted:#776a60; --brand:#7c3f2c;
-      --brand2:#b57548; --line:#eadccc; --ok:#2f7d4f; --want:#b55335; --read:#516fa3;
-      --shadow:0 18px 45px rgba(67,42,25,.13); --radius:22px;
+      --bg1:#fbf7ff; --bg2:#f1e7ff; --panel:#ffffff; --panel2:#faf7ff;
+      --ink:#241a31; --muted:#756781; --brand:#7c3aed; --brand2:#a855f7;
+      --brand3:#c084fc; --line:#e7d8ff; --ok:#168454; --want:#9d4edd;
+      --read:#4f46e5; --loan:#b7791f; --danger:#b42318;
+      --shadow:0 18px 45px rgba(76,29,149,.14); --shadow2:0 8px 24px rgba(76,29,149,.10);
+      --radius:24px;
     }
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#f7f2ea,#efe0cc);color:var(--ink);min-height:100vh}
-    header{padding:34px 5vw 22px;display:flex;gap:20px;justify-content:space-between;align-items:flex-end;flex-wrap:wrap}
-    h1{margin:0;font-size:clamp(28px,4vw,48px);letter-spacing:-1.5px}.subtitle{margin:8px 0 0;color:var(--muted);font-size:16px}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;padding:12px 16px;border-radius:14px;font-weight:700;cursor:pointer;background:var(--brand);color:white;box-shadow:0 10px 20px rgba(124,63,44,.17)}
-    .btn.secondary{background:#fff;color:var(--brand);border:1px solid var(--line);box-shadow:none}.btn.danger{background:#8f2d2d}.btn:active{transform:translateY(1px)}.btn:disabled{opacity:.55;cursor:not-allowed}
-    main{padding:0 5vw 36px}.stats{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:14px;margin:8px 0 20px}.stat{background:rgba(255,250,243,.84);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
-    .stat span{display:block;color:var(--muted);font-size:13px}.stat strong{font-size:28px}.toolbar{background:rgba(255,250,243,.88);border:1px solid var(--line);border-radius:var(--radius);padding:16px;display:grid;grid-template-columns:2fr repeat(4,1fr);gap:10px;box-shadow:var(--shadow);position:sticky;top:10px;z-index:5;backdrop-filter:blur(10px)}
-    input,select,textarea{width:100%;border:1px solid var(--line);border-radius:13px;padding:12px 13px;font:inherit;background:white;color:var(--ink)}
-    .viewbar{display:flex;justify-content:space-between;align-items:center;margin:18px 0 10px;color:var(--muted);gap:16px;flex-wrap:wrap} .sync{font-weight:700;color:var(--brand)}
-    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;min-height:220px}.card h3{margin:0;font-size:19px;line-height:1.2}.meta{color:var(--muted);font-size:14px;line-height:1.45}.pill{align-self:flex-start;padding:7px 10px;border-radius:999px;font-size:12px;font-weight:800}.Tenho{background:#e7f4ed;color:var(--ok)}.Quero-comprar{background:#fdebe4;color:var(--want)}.Lido{background:#e9eefb;color:var(--read)}.Emprestado{background:#fff1ca;color:#866000}.card-actions{margin-top:auto;display:flex;gap:8px}.small{padding:9px 11px;border-radius:11px;font-size:13px}.empty{padding:50px;text-align:center;color:var(--muted);background:rgba(255,250,243,.7);border:1px dashed var(--line);border-radius:var(--radius);grid-column:1/-1}
-    table{width:100%;border-collapse:separate;border-spacing:0 8px}th{text-align:left;color:var(--muted);font-size:13px;padding:0 12px}td{background:var(--panel);padding:14px 12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}td:first-child{border-left:1px solid var(--line);border-radius:14px 0 0 14px;font-weight:700}td:last-child{border-right:1px solid var(--line);border-radius:0 14px 14px 0}.hidden{display:none!important}
-    dialog{width:min(720px,92vw);border:0;border-radius:26px;padding:0;box-shadow:0 35px 90px rgba(30,18,10,.33)}dialog::backdrop{background:rgba(25,15,10,.48)}.modal{padding:24px;background:var(--panel)}.modal h2{margin:0 0 14px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formgrid .full{grid-column:1/-1}.modal-footer{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
-    .login-screen{min-height:100vh;display:grid;place-items:center;padding:28px;background:linear-gradient(135deg,#f7f2ea,#ead7bd)}.login-card{width:min(430px,94vw);background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--shadow)}.login-card h1{font-size:32px}.login-card label{display:block;margin:14px 0 8px;font-weight:700}.login-card .error{color:#9c2d2d;font-weight:700;min-height:22px;margin-top:12px}.user-chip{background:#fff;border:1px solid var(--line);padding:10px 12px;border-radius:999px;color:var(--muted);font-size:14px}
-    @media(max-width:850px){.toolbar{grid-template-columns:1fr 1fr}.toolbar input{grid-column:1/-1}.stats{grid-template-columns:1fr 1fr}}@media(max-width:560px){.toolbar,.stats{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}}
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);min-height:100vh;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(192,132,252,.35), transparent 28%),
+        radial-gradient(circle at 90% 8%, rgba(168,85,247,.22), transparent 30%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
+    }
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(124,58,237,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.045) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
+    header{padding:34px 5vw 22px;display:flex;gap:20px;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;position:relative}
+    h1{margin:0;font-size:clamp(30px,4vw,52px);letter-spacing:-1.8px;line-height:1;color:#2e1065}
+    .subtitle{margin:10px 0 0;color:var(--muted);font-size:16px;max-width:680px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .btn{border:0;padding:12px 16px;border-radius:15px;font-weight:800;cursor:pointer;background:linear-gradient(135deg,var(--brand),var(--brand2));color:white;box-shadow:0 12px 24px rgba(124,58,237,.22);transition:.18s transform,.18s box-shadow,.18s opacity}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 16px 30px rgba(124,58,237,.26)}
+    .btn.secondary{background:#fff;color:var(--brand);border:1px solid var(--line);box-shadow:var(--shadow2)}
+    .btn.danger{background:linear-gradient(135deg,#dc2626,#991b1b)}
+    .btn.ghost{background:#f6efff;color:#6d28d9;border:1px solid #eadcff;box-shadow:none}
+    .btn:active{transform:translateY(1px)}.btn:disabled{opacity:.55;cursor:not-allowed}
+    main{padding:0 5vw 36px;position:relative}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:14px;margin:8px 0 20px}
+    .stat{background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);backdrop-filter:blur(10px)}
+    .stat span{display:block;color:var(--muted);font-size:13px;font-weight:700}.stat strong{font-size:30px;color:#4c1d95}
+    .toolbar{background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:var(--radius);padding:16px;display:grid;grid-template-columns:2fr repeat(4,1fr);gap:10px;box-shadow:var(--shadow);position:sticky;top:10px;z-index:5;backdrop-filter:blur(10px)}
+    input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 13px;font:inherit;background:white;color:var(--ink);outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--brand3);box-shadow:0 0 0 4px rgba(168,85,247,.13)}
+    .viewbar{display:flex;justify-content:space-between;align-items:center;margin:18px 0 10px;color:var(--muted);gap:16px;flex-wrap:wrap}
+    .sync{font-weight:800;color:var(--brand)}
+    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+    .card{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);display:grid;grid-template-columns:92px 1fr;gap:16px;padding:16px;min-height:210px;transition:.2s transform,.2s box-shadow,.2s border-color;overflow:hidden;position:relative}
+    .card:hover{transform:translateY(-3px);box-shadow:0 24px 60px rgba(76,29,149,.18);border-color:#d8b4fe}
+    .cover{width:92px;height:138px;border-radius:16px;overflow:hidden;background:linear-gradient(145deg,#ede9fe,#c4b5fd);box-shadow:0 12px 22px rgba(76,29,149,.18);display:grid;place-items:center;color:#5b21b6;font-weight:900;text-align:center;font-size:12px;line-height:1.15;align-self:start}
+    .cover img{width:100%;height:100%;object-fit:cover;display:block}
+    .card-body{min-width:0;display:flex;flex-direction:column;gap:9px}
+    .card h3{margin:0;font-size:18px;line-height:1.18;color:#2e1065}
+    .meta{color:var(--muted);font-size:14px;line-height:1.45;word-break:break-word}.meta b{color:#4c1d95}
+    .pill{align-self:flex-start;padding:7px 10px;border-radius:999px;font-size:12px;font-weight:900}
+    .Tenho{background:#dcfce7;color:var(--ok)}.Quero-comprar{background:#f3e8ff;color:#7e22ce}.Lido{background:#e0e7ff;color:var(--read)}.Emprestado{background:#fef3c7;color:var(--loan)}
+    .card-actions{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}.small{padding:9px 11px;border-radius:12px;font-size:13px}
+    .empty{padding:50px;text-align:center;color:var(--muted);background:rgba(255,255,255,.75);border:1px dashed var(--line);border-radius:var(--radius);grid-column:1/-1}
+    table{width:100%;border-collapse:separate;border-spacing:0 8px}th{text-align:left;color:var(--muted);font-size:13px;padding:0 12px}td{background:rgba(255,255,255,.92);padding:14px 12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}td:first-child{border-left:1px solid var(--line);border-radius:14px 0 0 14px;font-weight:800}td:last-child{border-right:1px solid var(--line);border-radius:0 14px 14px 0}
+    .hidden{display:none!important}
+    dialog{width:min(760px,92vw);border:0;border-radius:28px;padding:0;box-shadow:0 35px 90px rgba(30,18,10,.33)}dialog::backdrop{background:rgba(46,16,101,.38);backdrop-filter:blur(3px)}.modal{padding:24px;background:var(--panel)}.modal h2{margin:0 0 14px;color:#3b0764}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formgrid .full{grid-column:1/-1}.modal-footer{display:flex;justify-content:flex-end;gap:10px;margin-top:16px;flex-wrap:wrap}
+    .login-screen{min-height:100vh;display:grid;place-items:center;padding:28px;background:radial-gradient(circle at top left,rgba(192,132,252,.4),transparent 34%),linear-gradient(135deg,#fbf7ff,#f1e7ff)}
+    .login-card{width:min(450px,94vw);background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:30px;padding:30px;box-shadow:var(--shadow);backdrop-filter:blur(10px)}.login-card h1{font-size:34px}.login-card label{display:block;margin:14px 0 8px;font-weight:800;color:#3b0764}.login-card .error{color:#9c2d2d;font-weight:800;min-height:22px;margin-top:12px}.user-chip{background:#fff;border:1px solid var(--line);padding:10px 12px;border-radius:999px;color:var(--muted);font-size:14px;box-shadow:var(--shadow2)}
+    @media(max-width:900px){.toolbar{grid-template-columns:1fr 1fr}.toolbar input{grid-column:1/-1}.stats{grid-template-columns:1fr 1fr}}
+    @media(max-width:620px){header{align-items:flex-start}.toolbar,.stats{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.card{grid-template-columns:78px 1fr;padding:13px;border-radius:22px}.cover{width:78px;height:118px}.card h3{font-size:16px}.actions .btn{width:100%}.actions{width:100%}}
   </style>
 </head>
 <body>
@@ -37,19 +73,65 @@
     <div id="loginError" class="error"></div>
   </form>
 </section>
+
 <section id="appScreen" class="hidden">
 <header>
-  <div><h1>Minha Biblioteca Virtual</h1><p class="subtitle">Cadastre, edite, filtre e acompanhe os livros sincronizados no Firebase.</p></div>
-  <div class="actions"><span class="user-chip" id="userEmail"></span><button class="btn" onclick="openForm()">+ Adicionar livro</button><button class="btn secondary" onclick="seedInitialBooks()" id="seedBtn">Importar planilha inicial</button><button class="btn secondary" onclick="exportCSV()">Exportar CSV</button><button class="btn secondary" onclick="toggleView()" id="viewBtn">Ver tabela</button><button class="btn secondary" onclick="logout()">Sair</button></div>
+  <div>
+    <h1>Minha Biblioteca Virtual</h1>
+    <p class="subtitle">Biblioteca sincronizada no Firebase, com visual lilás e capas automáticas via Google Books.</p>
+  </div>
+  <div class="actions">
+    <span class="user-chip" id="userEmail"></span>
+    <button class="btn" onclick="openForm()">+ Adicionar livro</button>
+    <button class="btn secondary" onclick="seedInitialBooks()" id="seedBtn">Importar planilha inicial</button>
+    <button class="btn secondary" onclick="updateMissingCovers()" id="coversBtn">Atualizar capas</button>
+    <button class="btn secondary" onclick="exportCSV()">Exportar CSV</button>
+    <button class="btn secondary" onclick="toggleView()" id="viewBtn">Ver tabela</button>
+    <button class="btn secondary" onclick="logout()">Sair</button>
+  </div>
 </header>
+
 <main>
-  <section class="stats"><div class="stat"><span>Total de livros</span><strong id="total">0</strong></div><div class="stat"><span>Tenho</span><strong id="tenho">0</strong></div><div class="stat"><span>Quero comprar</span><strong id="quero">0</strong></div><div class="stat"><span>Autores</span><strong id="autores">0</strong></div></section>
-  <section class="toolbar"><input id="search" placeholder="Buscar por livro, autor, série ou editora..." oninput="render()"><select id="statusFilter" onchange="render()"><option value="">Todos os status</option><option>Tenho</option><option>Quero comprar</option><option>Lido</option><option>Emprestado</option></select><select id="autorFilter" onchange="render()"><option value="">Todos os autores</option></select><select id="serieFilter" onchange="render()"><option value="">Todas as séries</option></select><select id="sort" onchange="render()"><option value="nome">Ordenar por livro</option><option value="autor">Ordenar por autor</option><option value="serie">Ordenar por série</option><option value="status">Ordenar por status</option></select></section>
+  <section class="stats">
+    <div class="stat"><span>Total de livros</span><strong id="total">0</strong></div>
+    <div class="stat"><span>Tenho</span><strong id="tenho">0</strong></div>
+    <div class="stat"><span>Quero comprar</span><strong id="quero">0</strong></div>
+    <div class="stat"><span>Autores</span><strong id="autores">0</strong></div>
+  </section>
+  <section class="toolbar">
+    <input id="search" placeholder="Buscar por livro, autor, série ou editora..." oninput="render()">
+    <select id="statusFilter" onchange="render()"><option value="">Todos os status</option><option>Tenho</option><option>Quero comprar</option><option>Lido</option><option>Emprestado</option></select>
+    <select id="autorFilter" onchange="render()"><option value="">Todos os autores</option></select>
+    <select id="serieFilter" onchange="render()"><option value="">Todas as séries</option></select>
+    <select id="sort" onchange="render()"><option value="nome">Ordenar por livro</option><option value="autor">Ordenar por autor</option><option value="serie">Ordenar por série</option><option value="status">Ordenar por status</option></select>
+  </section>
   <div class="viewbar"><span id="countText"></span><span class="sync" id="syncText">Conectando...</span></div>
-  <section id="cards" class="cards"></section><section id="tableWrap" class="hidden"></section>
+  <section id="cards" class="cards"></section>
+  <section id="tableWrap" class="hidden"></section>
 </main>
 </section>
-<dialog id="bookDialog"><form method="dialog" class="modal" onsubmit="saveBook(event)"><h2 id="modalTitle">Adicionar livro</h2><input type="hidden" id="bookId"><div class="formgrid"><label class="full">Nome do livro<input id="nome" required></label><label>Autor<input id="autor"></label><label>Série<input id="serie"></label><label>Editora<input id="editora"></label><label>Status<select id="status"><option>Tenho</option><option>Quero comprar</option><option>Lido</option><option>Emprestado</option></select></label><label class="full">Observações<textarea id="observacoes" rows="3" placeholder="Ex.: edição, volume, prioridade, onde comprar..."></textarea></label></div><div class="modal-footer"><button type="button" class="btn secondary" onclick="bookDialog.close()">Cancelar</button><button class="btn">Salvar</button></div></form></dialog>
+
+<dialog id="bookDialog">
+  <form method="dialog" class="modal" onsubmit="saveBook(event)">
+    <h2 id="modalTitle">Adicionar livro</h2>
+    <input type="hidden" id="bookId">
+    <div class="formgrid">
+      <label class="full">Nome do livro<input id="nome" required></label>
+      <label>Autor<input id="autor"></label>
+      <label>Série<input id="serie"></label>
+      <label>Editora<input id="editora"></label>
+      <label>Status<select id="status"><option>Tenho</option><option>Quero comprar</option><option>Lido</option><option>Emprestado</option></select></label>
+      <label class="full">URL da capa <input id="capaUrl" placeholder="Opcional: cole uma imagem ou deixe vazio para buscar automaticamente"></label>
+      <label class="full">Observações<textarea id="observacoes" rows="3" placeholder="Ex.: edição, volume, prioridade, onde comprar..."></textarea></label>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn ghost" onclick="buscarCapaNoFormulario()">Buscar capa</button>
+      <button type="button" class="btn secondary" onclick="bookDialog.close()">Cancelar</button>
+      <button class="btn">Salvar</button>
+    </div>
+  </form>
+</dialog>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
@@ -70,69 +152,279 @@ const INITIAL_BOOKS = [{"id": 1, "nome": "A BIBLIOTECA INVISÍVEL", "autor": "GE
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const livrosRef = collection(db, 'livros');
+const livrosRef = collection(db,'livros');
+
 let books = [];
 let tableMode = false;
-let unsubscribeBooks = null;
-const $ = id => document.getElementById(id);
+let unsubscribe = null;
 
+const $ = id => document.getElementById(id);
 window.openForm = openForm;
 window.saveBook = saveBook;
 window.removeBook = removeBook;
 window.toggleView = toggleView;
 window.exportCSV = exportCSV;
-window.logout = logout;
 window.seedInitialBooks = seedInitialBooks;
+window.logout = logout;
+window.render = render;
+window.buscarCapaNoFormulario = buscarCapaNoFormulario;
+window.updateMissingCovers = updateMissingCovers;
+window.refreshCover = refreshCover;
 
-$('loginForm').addEventListener('submit', async (e) => {
+$('loginForm').addEventListener('submit', async (e)=>{
   e.preventDefault();
   $('loginError').textContent = '';
-  try {
+  try{
     await signInWithEmailAndPassword(auth, $('loginEmail').value.trim(), $('loginPassword').value);
-  } catch (error) {
-    $('loginError').textContent = 'Não foi possível entrar. Confira e-mail e senha.';
-    console.error(error);
+  }catch(err){
+    $('loginError').textContent = 'E-mail ou senha inválidos. Confira se esse usuário foi criado no Firebase.';
+    console.error(err);
   }
 });
 
-onAuthStateChanged(auth, user => {
-  if (unsubscribeBooks) unsubscribeBooks();
-  if (!user) {
-    $('loginScreen').classList.remove('hidden');
+onAuthStateChanged(auth, user=>{
+  if(user){
+    $('loginScreen').classList.add('hidden');
+    $('appScreen').classList.remove('hidden');
+    $('userEmail').textContent = user.email;
+    listenBooks();
+  }else{
     $('appScreen').classList.add('hidden');
-    books = [];
-    return;
+    $('loginScreen').classList.remove('hidden');
+    if(unsubscribe) unsubscribe();
   }
-  $('userEmail').textContent = user.email;
-  $('loginScreen').classList.add('hidden');
-  $('appScreen').classList.remove('hidden');
-  $('syncText').textContent = 'Sincronizado com Firebase';
-  unsubscribeBooks = onSnapshot(livrosRef, snap => {
-    books = snap.docs.map(d => ({ _docId: d.id, ...d.data() }));
+});
+
+function listenBooks(){
+  $('syncText').textContent = 'Sincronizando...';
+  unsubscribe = onSnapshot(livrosRef, snap=>{
+    books = snap.docs.map(d=>({_docId:d.id, ...d.data()}));
+    $('syncText').textContent = 'Sincronizado';
     render();
-  }, err => {
-    $('syncText').textContent = 'Erro de sincronização. Verifique as regras do Firestore.';
+  }, err=>{
+    $('syncText').textContent = 'Erro ao conectar';
     console.error(err);
   });
-});
+}
 
-function norm(s){ return (s||'').toString().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
-function unique(key){ return [...new Set(books.map(b=>b[key]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt-BR')); }
-function fillFilters(){ const curA=$('autorFilter').value, curS=$('serieFilter').value; $('autorFilter').innerHTML='<option value="">Todos os autores</option>'+unique('autor').map(x=>`<option>${escapeHtml(x)}</option>`).join(''); $('serieFilter').innerHTML='<option value="">Todas as séries</option>'+unique('serie').map(x=>`<option>${escapeHtml(x)}</option>`).join(''); $('autorFilter').value=curA; $('serieFilter').value=curS; }
-function filtered(){ const q=norm($('search').value), st=$('statusFilter').value, au=$('autorFilter').value, se=$('serieFilter').value, sort=$('sort').value; return books.filter(b=>{ const all=norm([b.nome,b.autor,b.serie,b.editora,b.status].join(' ')); return (!q||all.includes(q)) && (!st||b.status===st) && (!au||b.autor===au) && (!se||b.serie===se); }).sort((a,b)=>(a[sort]||'').localeCompare(b[sort]||'','pt-BR')); }
-function render(){ fillFilters(); const list=filtered(); $('total').textContent=books.length; $('tenho').textContent=books.filter(b=>b.status==='Tenho').length; $('quero').textContent=books.filter(b=>b.status==='Quero comprar').length; $('autores').textContent=unique('autor').length; $('countText').textContent=`Mostrando ${list.length} de ${books.length} livros`; $('seedBtn').classList.toggle('hidden', books.length > 0); renderCards(list); renderTable(list); }
+function unique(field){
+  return [...new Set(books.map(b=>(b[field]||'').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt-BR'));
+}
+
+function fillFilters(){
+  const autorAtual = $('autorFilter').value;
+  const serieAtual = $('serieFilter').value;
+  $('autorFilter').innerHTML = '<option value="">Todos os autores</option>' + unique('autor').map(v=>`<option>${escapeHtml(v)}</option>`).join('');
+  $('serieFilter').innerHTML = '<option value="">Todas as séries</option>' + unique('serie').map(v=>`<option>${escapeHtml(v)}</option>`).join('');
+  $('autorFilter').value = autorAtual;
+  $('serieFilter').value = serieAtual;
+}
+
+function filtered(){
+  const q = $('search').value.toLowerCase().trim();
+  const st = $('statusFilter').value;
+  const au = $('autorFilter').value;
+  const se = $('serieFilter').value;
+  const sort = $('sort').value;
+  return books.filter(b=>{
+    const hay = [b.nome,b.autor,b.serie,b.editora,b.status].join(' ').toLowerCase();
+    return (!q || hay.includes(q)) && (!st || b.status===st) && (!au || b.autor===au) && (!se || b.serie===se);
+  }).sort((a,b)=>(a[sort]||'').localeCompare((b[sort]||''),'pt-BR'));
+}
+
+function render(){
+  fillFilters();
+  const list = filtered();
+  $('total').textContent = books.length;
+  $('tenho').textContent = books.filter(b=>b.status==='Tenho').length;
+  $('quero').textContent = books.filter(b=>b.status==='Quero comprar').length;
+  $('autores').textContent = unique('autor').length;
+  $('countText').textContent = `Mostrando ${list.length} de ${books.length} livros`;
+  $('seedBtn').classList.toggle('hidden', books.length > 0);
+  renderCards(list);
+  renderTable(list);
+}
+
 function statusClass(s){ return (s||'').replaceAll(' ','-'); }
 function qid(id){ return String(id).replace(/\\/g, '\\\\').replace(/'/g, "\\'"); }
-function renderCards(list){ $('cards').classList.toggle('hidden',tableMode); if(!list.length){ $('cards').innerHTML='<div class="empty">Nenhum livro encontrado. Se o banco estiver vazio, clique em “Importar planilha inicial”.</div>'; return; } $('cards').innerHTML=list.map(b=>`<article class="card"><span class="pill ${statusClass(b.status)}">${escapeHtml(b.status)}</span><h3>${escapeHtml(b.nome)}</h3><div class="meta"><b>Autor:</b> ${escapeHtml(b.autor)||'-'}<br><b>Série:</b> ${escapeHtml(b.serie)||'-'}<br><b>Editora:</b> ${escapeHtml(b.editora)||'-'}</div>${b.observacoes?`<div class="meta"><b>Obs.:</b> ${escapeHtml(b.observacoes)}</div>`:''}<div class="card-actions"><button class="btn secondary small" onclick="openForm('${qid(b._docId)}')">Editar</button><button class="btn danger small" onclick="removeBook('${qid(b._docId)}')">Excluir</button></div></article>`).join(''); }
-function renderTable(list){ $('tableWrap').classList.toggle('hidden',!tableMode); if(!tableMode) return; $('tableWrap').innerHTML=`<table><thead><tr><th>Livro</th><th>Autor</th><th>Série</th><th>Editora</th><th>Status</th><th>Ações</th></tr></thead><tbody>${list.map(b=>`<tr><td>${escapeHtml(b.nome)}</td><td>${escapeHtml(b.autor)}</td><td>${escapeHtml(b.serie)}</td><td>${escapeHtml(b.editora)}</td><td><span class="pill ${statusClass(b.status)}">${escapeHtml(b.status)}</span></td><td><button class="btn secondary small" onclick="openForm('${qid(b._docId)}')">Editar</button></td></tr>`).join('')}</tbody></table>`; }
-function openForm(docId=''){ const b=docId?books.find(x=>x._docId===docId):{_docId:'',nome:'',autor:'',serie:'',editora:'',status:'Tenho',observacoes:''}; $('modalTitle').textContent=docId?'Editar livro':'Adicionar livro'; ['bookId','nome','autor','serie','editora','status','observacoes'].forEach(k=>$(k).value = k==='bookId'?b._docId:(b[k]||'')); bookDialog.showModal(); }
-async function saveBook(e){ e.preventDefault(); const docId=$('bookId').value; const book={nome:$('nome').value.trim(),autor:$('autor').value.trim(),serie:$('serie').value.trim(),editora:$('editora').value.trim(),status:$('status').value,observacoes:$('observacoes').value.trim(),updatedAt:serverTimestamp()}; try { if(docId){ await setDoc(doc(db,'livros',docId), book, {merge:true}); } else { await addDoc(livrosRef, {...book, createdAt:serverTimestamp()}); } $('syncText').textContent='Alteração salva e sincronizada'; bookDialog.close(); } catch(err){ alert('Erro ao salvar. Verifique as regras do Firestore.'); console.error(err); } }
-async function removeBook(docId){ if(confirm('Deseja excluir este livro?')){ try{ await deleteDoc(doc(db,'livros',docId)); $('syncText').textContent='Livro excluído e sincronizado'; }catch(err){ alert('Erro ao excluir.'); console.error(err); } } }
+
+function coverHTML(b){
+  const title = escapeHtml((b.nome||'Livro').split(' ').slice(0,3).join(' '));
+  if(b.capaUrl) return `<div class="cover"><img src="${escapeHtml(b.capaUrl)}" alt="Capa de ${escapeHtml(b.nome)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.innerHTML='${title}'"></div>`;
+  return `<div class="cover">${title}</div>`;
+}
+
+function renderCards(list){
+  $('cards').classList.toggle('hidden',tableMode);
+  if(!list.length){
+    $('cards').innerHTML='<div class="empty">Nenhum livro encontrado. Se o banco estiver vazio, clique em “Importar planilha inicial”.</div>';
+    return;
+  }
+  $('cards').innerHTML = list.map(b=>`<article class="card">
+    ${coverHTML(b)}
+    <div class="card-body">
+      <span class="pill ${statusClass(b.status)}">${escapeHtml(b.status)}</span>
+      <h3>${escapeHtml(b.nome)}</h3>
+      <div class="meta"><b>Autor:</b> ${escapeHtml(b.autor)||'-'}<br><b>Série:</b> ${escapeHtml(b.serie)||'-'}<br><b>Editora:</b> ${escapeHtml(b.editora)||'-'}</div>
+      ${b.observacoes?`<div class="meta"><b>Obs.:</b> ${escapeHtml(b.observacoes)}</div>`:''}
+      <div class="card-actions">
+        <button class="btn secondary small" onclick="openForm('${qid(b._docId)}')">Editar</button>
+        <button class="btn ghost small" onclick="refreshCover('${qid(b._docId)}')">Capa</button>
+        <button class="btn danger small" onclick="removeBook('${qid(b._docId)}')">Excluir</button>
+      </div>
+    </div>
+  </article>`).join('');
+}
+
+function renderTable(list){
+  $('tableWrap').classList.toggle('hidden',!tableMode);
+  if(!tableMode) return;
+  $('tableWrap').innerHTML = `<table>
+    <thead><tr><th>Livro</th><th>Autor</th><th>Série</th><th>Editora</th><th>Status</th><th>Ações</th></tr></thead>
+    <tbody>${list.map(b=>`<tr>
+      <td>${escapeHtml(b.nome)}</td><td>${escapeHtml(b.autor)}</td><td>${escapeHtml(b.serie)}</td><td>${escapeHtml(b.editora)}</td><td>${escapeHtml(b.status)}</td>
+      <td><button class="btn secondary small" onclick="openForm('${qid(b._docId)}')">Editar</button> <button class="btn ghost small" onclick="refreshCover('${qid(b._docId)}')">Capa</button> <button class="btn danger small" onclick="removeBook('${qid(b._docId)}')">Excluir</button></td>
+    </tr>`).join('')}</tbody>
+  </table>`;
+}
+
+function openForm(docId=''){
+  const b = docId ? books.find(x=>x._docId===docId) : {_docId:'',nome:'',autor:'',serie:'',editora:'',status:'Tenho',observacoes:'',capaUrl:''};
+  $('modalTitle').textContent = docId ? 'Editar livro' : 'Adicionar livro';
+  ['bookId','nome','autor','serie','editora','status','observacoes','capaUrl'].forEach(k=>$(k).value = k==='bookId'?b._docId:(b[k]||''));
+  bookDialog.showModal();
+}
+
+async function saveBook(e){
+  e.preventDefault();
+  const docId = $('bookId').value;
+  let capaUrl = $('capaUrl').value.trim();
+  const base = {
+    nome:$('nome').value.trim(),
+    autor:$('autor').value.trim(),
+    serie:$('serie').value.trim(),
+    editora:$('editora').value.trim(),
+    status:$('status').value,
+    observacoes:$('observacoes').value.trim(),
+    capaUrl,
+    updatedAt:serverTimestamp()
+  };
+  try {
+    $('syncText').textContent = 'Salvando...';
+    if(!base.capaUrl) base.capaUrl = await buscarCapaGoogle(base.nome, base.autor);
+    if(docId) await setDoc(doc(db,'livros',docId), base, {merge:true});
+    else await addDoc(livrosRef, {...base, createdAt:serverTimestamp()});
+    $('syncText').textContent = 'Alteração salva e sincronizada';
+    bookDialog.close();
+  } catch(err){
+    alert('Erro ao salvar. Verifique as regras do Firestore.');
+    console.error(err);
+  }
+}
+
+async function removeBook(docId){
+  if(confirm('Deseja excluir este livro?')){
+    try{
+      await deleteDoc(doc(db,'livros',docId));
+      $('syncText').textContent='Livro excluído e sincronizado';
+    }catch(err){ alert('Erro ao excluir.'); console.error(err); }
+  }
+}
+
 function toggleView(){ tableMode=!tableMode; $('viewBtn').textContent=tableMode?'Ver cards':'Ver tabela'; render(); }
-function exportCSV(){ const header=['Nome do Livro','Autor','Serie','Editora','Status','Observacoes']; const rows=books.map(b=>[b.nome,b.autor,b.serie,b.editora,b.status,b.observacoes]); const csv=[header,...rows].map(r=>r.map(v=>`"${(v||'').replaceAll('\"','\"\"')}"`).join(';')).join('\n'); const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='biblioteca-virtual.csv'; a.click(); }
-async function seedInitialBooks(){ if(!confirm(`Importar os ${INITIAL_BOOKS.length} livros da planilha inicial para o Firebase?`)) return; $('seedBtn').disabled=true; $('syncText').textContent='Importando livros...'; try{ const snap=await getDocs(livrosRef); if(!snap.empty){ alert('O banco já possui livros. Importação cancelada para evitar duplicidade.'); return; } for(const b of INITIAL_BOOKS){ await setDoc(doc(db,'livros',String(b.id)), {...b, createdAt:serverTimestamp(), updatedAt:serverTimestamp()}); } $('syncText').textContent='Planilha inicial importada com sucesso'; }catch(err){ alert('Erro ao importar. Verifique as regras do Firestore.'); console.error(err); } finally { $('seedBtn').disabled=false; } }
+
+function exportCSV(){
+  const header=['Nome do Livro','Autor','Serie','Editora','Status','Observacoes','Capa'];
+  const rows=books.map(b=>[b.nome,b.autor,b.serie,b.editora,b.status,b.observacoes,b.capaUrl]);
+  const csv=[header,...rows].map(r=>r.map(v=>`"${(v||'').replaceAll('"','""')}"`).join(';')).join('\n');
+  const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='biblioteca-virtual.csv'; a.click();
+}
+
+async function seedInitialBooks(){
+  if(!confirm(`Importar os ${INITIAL_BOOKS.length} livros da planilha inicial para o Firebase?`)) return;
+  $('seedBtn').disabled=true; $('syncText').textContent='Importando livros...';
+  try{
+    const snap=await getDocs(livrosRef);
+    if(!snap.empty){ alert('O banco já possui livros. Importação cancelada para evitar duplicidade.'); return; }
+    for(const b of INITIAL_BOOKS){
+      await setDoc(doc(db,'livros',String(b.id)), {...b, capaUrl:b.capaUrl||'', createdAt:serverTimestamp(), updatedAt:serverTimestamp()});
+    }
+    $('syncText').textContent='Planilha inicial importada com sucesso';
+  }catch(err){ alert('Erro ao importar. Verifique as regras do Firestore.'); console.error(err); }
+  finally { $('seedBtn').disabled=false; }
+}
+
+async function buscarCapaGoogle(nome, autor=''){
+  if(!nome) return '';
+  const cleanTitle = nome.replace(/\(.*?\)/g,'').replace(/box/ig,'').trim();
+  const query = encodeURIComponent(`intitle:${cleanTitle} ${autor ? 'inauthor:'+autor : ''}`);
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=5&printType=books&langRestrict=pt`;
+  try{
+    const res = await fetch(url);
+    if(!res.ok) return '';
+    const data = await res.json();
+    const item = (data.items||[]).find(i=>i.volumeInfo?.imageLinks?.thumbnail || i.volumeInfo?.imageLinks?.smallThumbnail);
+    let img = item?.volumeInfo?.imageLinks?.thumbnail || item?.volumeInfo?.imageLinks?.smallThumbnail || '';
+    return img ? img.replace('http://','https://').replace('&edge=curl','') : '';
+  }catch(err){ console.warn('Capa não encontrada', err); return ''; }
+}
+
+async function buscarCapaNoFormulario(){
+  $('syncText').textContent = 'Buscando capa...';
+  const capa = await buscarCapaGoogle($('nome').value.trim(), $('autor').value.trim());
+  if(capa){
+    $('capaUrl').value = capa;
+    $('syncText').textContent = 'Capa encontrada';
+  }else{
+    $('syncText').textContent = 'Capa não encontrada';
+    alert('Não encontrei uma capa automaticamente. Você pode colar uma URL manualmente.');
+  }
+}
+
+async function refreshCover(docId){
+  const b = books.find(x=>x._docId===docId);
+  if(!b) return;
+  $('syncText').textContent = `Buscando capa: ${b.nome}`;
+  const capa = await buscarCapaGoogle(b.nome, b.autor);
+  if(!capa){ $('syncText').textContent = 'Capa não encontrada'; return; }
+  await setDoc(doc(db,'livros',docId), {capaUrl:capa, updatedAt:serverTimestamp()}, {merge:true});
+  $('syncText').textContent = 'Capa atualizada';
+}
+
+function delay(ms){ return new Promise(resolve=>setTimeout(resolve, ms)); }
+
+async function updateMissingCovers(){
+  const list = books.filter(b=>!b.capaUrl);
+  if(!list.length){ alert('Todos os livros já têm capa ou URL preenchida.'); return; }
+  if(!confirm(`Buscar capas para ${list.length} livros sem capa? Pode demorar alguns minutos.`)) return;
+  $('coversBtn').disabled = true;
+  let ok = 0;
+  try{
+    for(let i=0;i<list.length;i++){
+      const b = list[i];
+      $('syncText').textContent = `Buscando capas ${i+1}/${list.length}: ${b.nome}`;
+      const capa = await buscarCapaGoogle(b.nome, b.autor);
+      if(capa){
+        await setDoc(doc(db,'livros',b._docId), {capaUrl:capa, updatedAt:serverTimestamp()}, {merge:true});
+        ok++;
+      }
+      await delay(140);
+    }
+    $('syncText').textContent = `Capas atualizadas: ${ok} encontradas`;
+  }catch(err){
+    alert('Erro ao atualizar capas. Tente novamente em alguns minutos.');
+    console.error(err);
+  }finally{
+    $('coversBtn').disabled = false;
+  }
+}
+
 async function logout(){ await signOut(auth); }
-function escapeHtml(str){ return (str||'').toString().replace(/[&<>'"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
+
+function escapeHtml(str){
+  return (str||'').toString().replace(/[&<>'"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+}
 </script>
 </body>
 </html>
