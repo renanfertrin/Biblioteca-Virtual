@@ -437,10 +437,10 @@ function toggleView(){ tableMode=!tableMode; $('viewBtn').textContent=tableMode?
 function exportCSV(){
   const header=['Nome do Livro','Autor','Serie','Volume','Editora','Status','Observacoes','Capa','Compra'];
   const rows=books.map(b=>[b.nome,b.autor,b.serie,b.volume,b.editora,b.status,b.observacoes,b.capaUrl,b.compraUrl]);
-  const csv=[header,...rows].map(r=>r.map(v=>`"${(v||'').replaceAll('"','""')}"`).join(';')).join('\n');
+  const csv=[header,...rows].map(r=>r.map(v=>`"${String(v ?? '').replaceAll('"','""')}"`).join(';')).join('\n');
   const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='biblioteca-virtual.csv'; a.click();
-}
+}s
 
 
 async function syncNewSpreadsheet(){
