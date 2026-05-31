@@ -570,6 +570,10 @@ function escapeHtml(str){
   return (str||'').toString().replace(/[&<>'"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 }
 function escapeAttr(str){ return escapeHtml(str).replace(/`/g,'&#96;'); }
+
+  window.syncNewSpreadsheet = async function () {
+  alert("Botão funcionando! Agora falta colocar a lógica da planilha nova.");
+};s
 </script>
 </body>
 </html>
