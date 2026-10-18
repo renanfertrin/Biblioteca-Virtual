@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Minha Biblioteca Virtual</title>
+  <meta name="theme-color" content="#7c3aed" />
+  <meta name="application-name" content="Minha Biblioteca Virtual" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Biblioteca" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icon.svg" type="image/svg+xml" />
   <style>
     :root{
       --bg1:#fbf7ff; --bg2:#f1e7ff; --panel:#ffffff; --panel2:#faf7ff;
@@ -623,6 +629,15 @@ function escapeHtml(str){
   return (str||'').toString().replace(/[&<>'"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 }
 function escapeAttr(str){ return escapeHtml(str).replace(/`/g,'&#96;'); }
+</script>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js").catch((error) => {
+        console.error("Não foi possível preparar a instalação do aplicativo:", error);
+      });
+    });
+  }
 </script>
 </body>
 </html>
