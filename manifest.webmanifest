@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "Minha Biblioteca Virtual",
+  "short_name": "Biblioteca",
+  "description": "Sua biblioteca pessoal sincronizada entre dispositivos.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbf7ff",
+  "theme_color": "#7c3aed",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
